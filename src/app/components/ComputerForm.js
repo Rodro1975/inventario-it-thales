@@ -8,7 +8,7 @@ import Image from "next/image";
 import logoImage from "@/public/ThalesLogo.png";
 import Link from "next/link";
 import { supabase } from "@/utils/supabaseClient";
-import { useState } from "react"; // Importar useState para manejar mensajes
+import { useState, useEffect } from "react"; // Importar useState para manejar mensajes
 
 // Esquema de validación con Zod
 const RegisterUserSchema = z.object({
@@ -86,6 +86,8 @@ export default function ComputerForm() {
       reset(); // Limpiar el formulario después de enviar
     }
   };
+
+  
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
