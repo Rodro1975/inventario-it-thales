@@ -1,8 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
   "/login/page": "app/login/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/showComputers/page": "app/showComputers/page.js",
-  "/addComputer/page": "app/addComputer/page.js"
+  "/addPeripheral/page": "app/addPeripheral/page.js",
+  "/addUser/page": "app/addUser/page.js",
+  "/addComputer/page": "app/addComputer/page.js",
+  "/dashboard/page": "app/dashboard/page.js"
 }
