@@ -4,7 +4,7 @@
 import Image from "next/image";
 import logoImage from "@/public/ThalesLogo.png";
 import Link from "next/link";
-import { supabase } from "@/utils/supabaseClient";
+import supabase from "@/utils/supabaseClient"; 
 import Footer from "../components/Footer";
 
 const DashboardPage = () => {

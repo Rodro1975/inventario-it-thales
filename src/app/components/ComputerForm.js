@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import logoImage from "@/public/ThalesLogo.png";
 import Link from "next/link";
-import { supabase } from "@/utils/supabaseClient";
+import supabase from "@/utils/supabaseClient"; // Adjust the path if needed
 import { useState, useEffect } from "react"; // Importar useState para manejar mensajes
 
 // Esquema de validación con Zod

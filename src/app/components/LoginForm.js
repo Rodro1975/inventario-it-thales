@@ -5,7 +5,7 @@ import React, { useState } from 'react'; // Asegúrate de importar useState
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import logoImage from "@/public/ThalesLogo.png"; // Importa la imagen del logo
-import { supabase } from '@/utils/supabaseClient';
+import supabase from "@/utils/supabaseClient"; 
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');

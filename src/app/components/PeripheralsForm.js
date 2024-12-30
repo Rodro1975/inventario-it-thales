@@ -42,7 +42,7 @@ const RegisterUserSchema = z.object({
 export default function PeripheralsForm() {
   const [successMessage, setSuccessMessage] = useState(""); // State to manage the state of success
   const {
-    register, // Corrección aquí
+    register,
     handleSubmit,
     reset,
     formState: { errors },
@@ -64,10 +64,10 @@ export default function PeripheralsForm() {
       .insert([{ ...sanitizedData }]);
 
     if (error) {
-      console.error("Error inserting data into the database: ", error);
+      console.error("Error inserting data into the database:", error);
       setSuccessMessage("");
     } else {
-      console.log("Data inserted: ", insertData);
+      console.log("Data inserted:", insertData);
       setSuccessMessage("Data inserted correctly.");
       reset();
     }
@@ -199,14 +199,14 @@ export default function PeripheralsForm() {
               {...register("ubication")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
             >
-              <option value="">Selecciona una ubicación</option>
-              <option value="primer">Primer Piso</option>
-              <option value="segundo">Segundo Piso</option>
-              <option value="tercer">Tercer Piso</option>
-              <option value="cuarto">Cuarto Piso</option>
-              <option value="quinto">Quinto Piso</option>
-              <option value="cundinamarca">Sala Cundinamarca</option>
-              <option value="amazonas">Sala Amazonas</option>
+              <option value="">Select a location</option>
+              <option value="first">First Floor</option>
+              <option value="second">Second floor</option>
+              <option value="third">Third Floor</option>
+              <option value="fourth">Fourth Floor</option>
+              <option value="fifth">Fifth Floor</option>
+              <option value="cundinamarca">Cundinamarca Room</option>
+              <option value="amazonas">Amazonas Room</option>
             </select>
             {errors.ubication && <p>{errors.ubication.message}</p>}
           </div>
@@ -241,29 +241,33 @@ export default function PeripheralsForm() {
               htmlFor="warranty"
               className="ml-2 block text-sm font-medium text-gray-700"
             >
-              ¿The equipment has a guarantee?
+              The equipment has a guarantee?
             </label>
           </div>
 
           {/* Add other camps here! */}
 
-          <button type="submit" className="mt-4 mr-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+          <button
+            type="submit"
+            className="mt-4 mr-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+          >
             Add
           </button>
 
-          <Link            
+          <Link
             href="/dashboard"
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >
             Go Dashboard
           </Link>
 
           <Link
             onClick={() => supabase.auth.signOut()}
             href="/"
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >
             Go Home
           </Link>
-
         </form>
         {successMessage && <p className="text-green-500">{successMessage}</p>}
       </div>
