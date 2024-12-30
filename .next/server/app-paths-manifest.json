@@ -1,7 +1,7 @@
 {
   "/login/page": "app/login/page.js",
-  "/addPeripheral/page": "app/addPeripheral/page.js",
-  "/addUser/page": "app/addUser/page.js",
+  "/page": "app/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/addComputer/page": "app/addComputer/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/addPeripheral/page": "app/addPeripheral/page.js"
 }

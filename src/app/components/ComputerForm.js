@@ -24,13 +24,13 @@ const RegisterUserSchema = z.object({
   price: z.preprocess(
     (val) => {
       const parsed = parseFloat(val);
-      return isNaN(parsed) ? undefined : parsed; // Devuelve undefined si no es un número
+      return isNaN(parsed) ? undefined : parsed; // returns undefined if not a number
     },
     z
       .number()
       .optional()
       .refine((val) => val === undefined || val > 0, {
-        message: "El precio debe ser un número positivo.",
+        message: "The price must be a positive number.",
       })
   ),
   ubication: z.string().min(1, { message: "La ubicación es requerida." }),
@@ -39,7 +39,7 @@ const RegisterUserSchema = z.object({
   }),
   technicalSpecific: z.string().optional(),
   peripherals: z.string().optional(),
-  warranty: z.boolean(), // Cambiado a booleano
+  warranty: z.boolean(), // changed to boolean
 });
 
 export default function ComputerForm() {
@@ -86,8 +86,6 @@ export default function ComputerForm() {
       reset(); // Limpiar el formulario después de enviar
     }
   };
-
-  
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -224,9 +222,7 @@ export default function ComputerForm() {
               <option value="cundinamarca">Sala Cundinamarca</option>
               <option value="amazonas">Sala Amazonas</option>
             </select>
-            {errors.ubication && (
-              <p>{errors.ubication.message}</p>
-            )}
+            {errors.ubication && <p>{errors.ubication.message}</p>}
           </div>
 
           <div className="mb-4">
@@ -320,19 +316,20 @@ export default function ComputerForm() {
           >
             Add
           </button>
+
+          <Link
+            href="/dashboard"
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >
+            Go Dashboard
+          </Link>
+
           <Link
             onClick={() => supabase.auth.signOut()}
             href="/"
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
           >
             Go Home
-          </Link>
-          <Link
-            
-            href="/dashboard"
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-          >
-            Go Dashboard
           </Link>
         </form>
       </div>

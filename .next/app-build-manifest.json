@@ -30,11 +30,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/addPeripheral/page.js"
-    ],
-    "/addUser/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/addUser/page.js"
     ]
   }
 }
