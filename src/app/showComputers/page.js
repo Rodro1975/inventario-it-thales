@@ -49,12 +49,13 @@ const ShowComputers = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center bg-gray-100 mt-8">
       {/* Sección del Logo */}
-      <div className="flex justify-center mb-8">
+      <div className="flex flex-col items-center mb-8">
         <Image src={logoImage} alt="Thales Logo" width={150} height={50} />
       </div>
-      <h1 className="text-4xl font-bold mb-8">Lista de Equipos</h1>
+      <h1 className="text-4xl font-bold mb-8">Lista de Computadoras</h1>
+      <div className="overflow-auto w-full max-w-screen-lg">
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr>
@@ -94,7 +95,7 @@ const ShowComputers = () => {
                     setCurrentComputer(computer); //Establecer el equipo actual a editar
                     setIsEditing(true); //abrir el modal
                   }}
-                  className="bg-yellow-500 text-white px-4 py-1 rounded"
+                  className="bg-yellow-500 text-white px-4 py-1 rounded mt-2"
                 >
                   Modificar
                 </button>
@@ -114,6 +115,7 @@ const ShowComputers = () => {
           onUpdate={fetchComputers} // Refrescar la lista después de actualizar
         />
       )}
+      </div>
 
       {/* Enlace para cerrar sesión */}
       <div className="flex">
@@ -130,7 +132,7 @@ const ShowComputers = () => {
             router.push("/"); // Redirigir a la página de inicio después de cerrar sesión
           }}
           href="#"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6 ml-4"
         >
           Go Home
         </Link>
