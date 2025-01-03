@@ -292,23 +292,7 @@ export default function ComputerForm() {
             >
               ¿El equipo tiene garantía?
             </label>
-          </div>
-
-          {/*<div>
-            <label
-              htmlFor="timeRemain"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Tiempo Restante de Garantía
-            </label>
-            <input
-              id="timeRemain"
-              type="text"
-              {...register("timeRemain")}
-              className=" mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-              placeholder="Este campo se calculara automaticamente"
-            />
-          </div>*/}
+          </div>         
 
           <button
             type="submit"
@@ -316,6 +300,14 @@ export default function ComputerForm() {
           >
             Add
           </button>
+
+          <Link
+            onClick={() => supabase.auth.signOut()}
+            href="/showComputers"
+            className="bg-gray-300 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >
+            Show Computers
+          </Link>
 
           <Link
             href="/dashboard"

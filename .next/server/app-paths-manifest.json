@@ -1,1 +1,9 @@
-{}
+{
+  "/dashboard/page": "app/dashboard/page.js",
+  "/addPeripheral/page": "app/addPeripheral/page.js",
+  "/login/page": "app/login/page.js",
+  "/addComputer/page": "app/addComputer/page.js",
+  "/showComputers/page": "app/showComputers/page.js",
+  "/showPeripheral/page": "app/showPeripheral/page.js",
+  "/addUser/page": "app/addUser/page.js"
+}

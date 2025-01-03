@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import supabase from "@/utils/supabaseClient"; 
+import supabase from "@/utils/supabaseClient";
 import Image from "next/image";
 import logoImage from "@/public/ThalesLogo.png";
 import Link from "next/link"; // Asegúrate de importar Link
@@ -56,75 +56,85 @@ const ShowComputers = () => {
       </div>
       <h1 className="text-4xl font-bold mb-8">Lista de Computadoras</h1>
       <div className="overflow-auto w-full max-w-screen-lg">
-      <table className="min-w-full bg-white border border-gray-300">
-        <thead>
-          <tr>
-            <th className="border px-4 py-2">Id</th>
-            <th className="border px-4 py-2">Nombre</th>
-            <th className="border px-4 py-2">Marca</th>
-            <th className="border px-4 py-2">Modelo</th>
-            <th className="border px-4 py-2">Service Tag</th>
-            <th className="border px-4 py-2">Ubicación</th>
-            <th className="border px-4 py-2">Especificaciones Técnicas</th>
-            <th className="border px-4 py-2">Periféricos</th>
-            <th className="border px-4 py-2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {computers.map((computer) => (
-            <tr key={computer.id}>
-              <td className="border px-4 py-2">{computer.id}</td>
-              <td className="border px-4 py-2">{computer.name}</td>
-              <td className="border px-4 py-2">{computer.brand}</td>
-              <td className="border px-4 py-2">{computer.model}</td>
-              <td className="border px-4 py-2">{computer.serviceTag}</td>
-              <td className="border px-4 py-2">{computer.ubication}</td>
-              <td className="border px-4 py-2">{computer.technicalSpecific}</td>
-              <td className="border px-4 py-2">{computer.peripherals}</td>
-              <td className="border px-4 py-2">
-                {/* Botón para eliminar */}
-                <button
-                  onClick={() => handleDelete(computer.id)}
-                  className="bg-red-500 text-white px-4 py-1 rounded"
-                >
-                  Eliminar
-                </button>
-                {/* Botón para editar o modificar */}
-                <button
-                  onClick={() => {
-                    setCurrentComputer(computer); //Establecer el equipo actual a editar
-                    setIsEditing(true); //abrir el modal
-                  }}
-                  className="bg-yellow-500 text-white px-4 py-1 rounded mt-2"
-                >
-                  Modificar
-                </button>
-                {/* Por ejemplo, un enlace a una página de edición */}
-                {/* <Link href={`/editComputer/${computer.id}`}>Editar</Link> */}
-              </td>
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead>
+            <tr>
+              <th className="border px-4 py-2">Id</th>
+              <th className="border px-4 py-2">Nombre</th>
+              <th className="border px-4 py-2">Marca</th>
+              <th className="border px-4 py-2">Modelo</th>
+              <th className="border px-4 py-2">Service Tag</th>
+              <th className="border px-4 py-2">Ubicación</th>
+              <th className="border px-4 py-2">Especificaciones Técnicas</th>
+              <th className="border px-4 py-2">Periféricos</th>
+              <th className="border px-4 py-2">Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {computers.map((computer) => (
+              <tr key={computer.id}>
+                <td className="border px-4 py-2">{computer.id}</td>
+                <td className="border px-4 py-2">{computer.name}</td>
+                <td className="border px-4 py-2">{computer.brand}</td>
+                <td className="border px-4 py-2">{computer.model}</td>
+                <td className="border px-4 py-2">{computer.serviceTag}</td>
+                <td className="border px-4 py-2">{computer.ubication}</td>
+                <td className="border px-4 py-2">
+                  {computer.technicalSpecific}
+                </td>
+                <td className="border px-4 py-2">{computer.peripherals}</td>
+                <td className="border px-4 py-2">
+                  {/* Botón para eliminar */}
+                  <button
+                    onClick={() => handleDelete(computer.id)}
+                    className="bg-red-500 text-white px-4 py-1 rounded"
+                  >
+                    Eliminar
+                  </button>
+                  {/* Botón para editar o modificar */}
+                  <button
+                    onClick={() => {
+                      setCurrentComputer(computer); //Establecer el equipo actual a editar
+                      setIsEditing(true); //abrir el modal
+                    }}
+                    className="bg-yellow-500 text-white px-4 py-1 rounded mt-2"
+                  >
+                    Modificar
+                  </button>
+                  {/* Por ejemplo, un enlace a una página de edición */}
+                  {/* <Link href={`/editComputer/${computer.id}`}>Editar</Link> */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      {/* Mostrar modal de edición si está activo */}
-      {isEditing && currentComputer && (
-        <UpdateComputer
-          computer={currentComputer}
-          onClose={() => setIsEditing(false)}
-          onUpdate={fetchComputers} // Refrescar la lista después de actualizar
-        />
-      )}
+        {/* Mostrar modal de edición si está activo */}
+        {isEditing && currentComputer && (
+          <UpdateComputer
+            computer={currentComputer}
+            onClose={() => setIsEditing(false)}
+            onUpdate={fetchComputers} // Refrescar la lista después de actualizar
+          />
+        )}
       </div>
 
       {/* Enlace para cerrar sesión */}
       <div className="flex">
         <Link
+          href="/addComputer"
+          className="bg-gray-300 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6"
+        >
+          Add Computer
+        </Link>
+
+        <Link
           href="/dashboard"
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6"
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-6 ml-4"
         >
           Go Dashboard
         </Link>
+
         <Link
           onClick={(e) => {
             e.preventDefault(); // Prevenir la acción predeterminada del enlace
